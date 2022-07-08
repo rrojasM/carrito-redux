@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const Carrito = () => {
+const Carrito = ({carrito}) => {
 
-    const [carrito, setCarrito] = useState([])
     return (
         <div>
             <h3>Carrito de compras</h3>
