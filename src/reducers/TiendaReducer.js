@@ -3,7 +3,11 @@ const initialState = {
         { id: 1, nombre: "Producto 1" },
         { id: 2, nombre: "Producto 2" },
         { id: 3, nombre: "Producto 3" },
-        { id: 4, nombre: "Producto 4" }
+        { id: 4, nombre: "Producto 4" },
+        { id: 5, nombre: "Producto A" },
+        { id: 6, nombre: "Producto B" },
+        { id: 7, nombre: "Producto C" },
+        { id: 8, nombre: "Producto D" }
     ],
 
     carrito: []
