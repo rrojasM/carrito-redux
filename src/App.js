@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink, Routes, Route } from "react-router-dom";
 import Inicio from "./components/inicio";
@@ -8,55 +8,6 @@ import Error from "./components/Error";
 import Carrito from "./components/Carrito";
 
 const App = () => {
-
-  const productos = [
-    { id: 1, nombre: "Producto 1" },
-    { id: 2, nombre: "Producto 2" },
-    { id: 3, nombre: "Producto 3" },
-    { id: 4, nombre: "Producto 4" }
-  ];
-
-  const [carrito, setCarrito] = useState([]);
-
-
-  const agregarProductosAlCarrito = (idProducto, nombre) => {
-    if (carrito.length === 0) {
-      setCarrito([{ id: idProducto, nombre: nombre, cantidad: 1 }])
-    } else {
-      const nuevoCarrito = [...carrito];
-
-      const yaEstaEnCarrito = nuevoCarrito.filter((elemento) => {
-        return elemento.id === idProducto;
-      }).length > 0;
-
-
-      if (yaEstaEnCarrito) {
-        nuevoCarrito.forEach((item, i) => {
-          if (item.id === idProducto) {
-            const cantidadIndex = nuevoCarrito[i].cantidad;
-            
-            nuevoCarrito[i] = {
-              id: idProducto,
-              nombre: nombre,
-              cantidad: cantidadIndex + 1
-            };
-          }
-        })
-      } else {
-        nuevoCarrito.push(
-          {
-            id: idProducto,
-            nombre: nombre,
-            cantidad: 1
-          }
-        )
-      }
-
-      setCarrito(nuevoCarrito)
-
-    }
-  }
-
   return (
     <Contenedor>
       <Menu>
@@ -69,17 +20,11 @@ const App = () => {
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Inicio />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/tienda"
-            element={
-              <Tienda productos={productos}
-                agregarProductosAlCarrito={agregarProductosAlCarrito}
-              />
-            }
-          />
+          <Route path="/tienda" element={<Tienda />} />
         </Routes>
       </main>
       <aside>
-        <Carrito carrito={carrito} />
+        <Carrito />
       </aside>
 
     </Contenedor>
